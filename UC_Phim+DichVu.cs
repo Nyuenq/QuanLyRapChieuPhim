@@ -11,14 +11,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
 
-    public partial class Phim : UserControl
+    public partial class PhimVaDichVu : UserControl
     {
         public PhimDTO Data;
         public DichVuDTO duDV;
-        public Phim()
+        public PhimVaDichVu()
         {
             InitializeComponent();
             

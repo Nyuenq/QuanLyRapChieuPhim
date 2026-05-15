@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
     public partial class FrmThanhToan : Form
     {
@@ -28,38 +28,19 @@ namespace QuanLyKhamBenhNgoaiTru
         private void FrmThanhToan_Load_1(object sender, EventArgs e)
         {
             lbTenPhim.Text = MaHD.TenPhim;
-
             lbPhong.Text = MaHD.TenPhong;
-
-            lbNgay.Text =
-                MaHD.NgayChieu.ToString("dd/MM/yyyy");
-
-            lbGio.Text =
-                MaHD.GioChieu.ToString(@"hh\:mm");
-
+            lbNgay.Text = MaHD.NgayChieu.ToString("dd/MM/yyyy");
+            lbGio.Text = MaHD.GioChieu.ToString(@"hh\:mm");
             dgvVe.Rows.Clear();
-
-            decimal giaGoc =
-                veBLL.LayGiaVeGoc(MaHD.MaSuatChieu);
+            decimal giaGoc =  veBLL.LayGiaVeGoc(MaHD.MaSuatChieu);
             if (MaHD.GheDangChon != null)
             {
 
                 foreach (var ghe in MaHD.GheDangChon)
                 {
-                    decimal gia = giaGoc;
-                    if (ghe.LoaiGhe == "VIP")
-                    {
-                        gia += 10000;
-                    }
-                    else if (ghe.LoaiGhe == "Đôi")
-                    {
-                        gia = (giaGoc * 2) + 20000;
-                    }
+                    decimal gia = veBLL.TinhGiaVeChoGhe(ghe,giaGoc);
 
-                    dgvVe.Rows.Add(
-                        ghe.HangGhe + ghe.SoG,
-                        ghe.LoaiGhe,
-                        gia.ToString("N0") + " VNĐ");
+                    dgvVe.Rows.Add(ghe.HangGhe + ghe.SoG, ghe.LoaiGhe, gia.ToString("N0") + " VNĐ");
                 }
             }
 
@@ -69,45 +50,41 @@ namespace QuanLyKhamBenhNgoaiTru
             {
                 foreach (var item in MaHD.GioHang)
                 {
-                    dgvDichVu.Rows.Add(
-                        item.TenDV,
-                        item.SoLuong,
-                        item.Gia.ToString("N0"),
-                        item.ThanhTien.ToString("N0")
-                    );
+                    dgvDichVu.Rows.Add(item.TenDV,item.SoLuong,item.Gia.ToString("N0"),item.ThanhTien.ToString("N0"));
                 }
             }
-
-
-            lbTienVe.Text =
-                MaHD.TongTienGhe.ToString("N0") + " VNĐ";
-
-            lbTienDV.Text =
-                MaHD.TongTienDichVu.ToString("N0") + " VNĐ";
-
-
-            lbTongTien.Text =
-               MaHD.TongTien.ToString("N0") + " VNĐ";
+            lbTienVe.Text = MaHD.TongTienGhe.ToString("N0") + " VNĐ";
+            lbTienDV.Text = MaHD.TongTienDichVu.ToString("N0") + " VNĐ";
+            lbTongTien.Text = MaHD.TongTien.ToString("N0") + " VNĐ";
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            btnThanhToan.Enabled = false;
-            string maHDTuDong = hoadonBLL.TaoMaHoaDon();
-            bool kq = veBLL.DatVe(maHDTuDong, MaHD.MaTaiKhoan, MaHD.MaSuatChieu, MaHD.GheDangChon, MaHD.GioHang);
-
-            if (kq)
+            try
             {
-                MessageBox.Show("Thanh toán thành công");
-                FrmHoaDon frmHoaDon = new FrmHoaDon(maHDTuDong);
-                frmHoaDon.ShowDialog();
+                btnThanhToan.Enabled = false;
 
-                MaHD.Reset();
-                this.Close();
+                string maHDTuDong = hoadonBLL.TaoMaHoaDon();
+
+                bool kq = veBLL.DatVe(maHDTuDong,MaHD.MaTaiKhoan,MaHD.MaSuatChieu,MaHD.GheDangChon,MaHD.GioHang);
+
+                if (kq)
+                {
+                    MessageBox.Show("Thanh toán thành công");
+
+                    FrmHoaDon frmHoaDon = new FrmHoaDon(maHDTuDong);
+
+                    frmHoaDon.ShowDialog();
+
+                    MaHD.Reset();
+
+                    this.Close();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Thanh toán thất bại");
+                MessageBox.Show(ex.Message);
+
                 btnThanhToan.Enabled = true;
             }
         }

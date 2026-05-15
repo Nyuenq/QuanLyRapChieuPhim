@@ -1,6 +1,6 @@
-﻿namespace QuanLyKhamBenhNgoaiTru
+﻿namespace QuanLyRapChieuPhim
 {
-    partial class Ghe
+    partial class UC_Ghe
     {
         /// <summary> 
         /// Required designer variable.

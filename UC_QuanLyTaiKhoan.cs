@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
     public partial class UC_QuanLyTaiKhoan : UserControl
     {

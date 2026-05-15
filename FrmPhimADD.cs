@@ -11,17 +11,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
-    public partial class PhimADD : Form
+    public partial class FrmPhimADD : Form
     {
-        public PhimADD()
+        public FrmPhimADD()
         {
             InitializeComponent();
         }
         PhimBLL bll = new PhimBLL();
         string maPhim = null;
-        public PhimADD(string ma)
+        public FrmPhimADD(string ma)
         {
             InitializeComponent();
             maPhim = ma;
@@ -43,11 +43,8 @@ namespace QuanLyKhamBenhNgoaiTru
                     dtNgay.Value = p.Ngay;
                     cboTrangThai.Text = p.TrangThai;
                     txtPoster.Text = p.Poster;
-
-                    // hiển thị ảnh luôn
                     string path = Path.Combine(Application.StartupPath, "Poster", p.Poster);
-                    if (File.Exists(path))
-                        picPreview.ImageLocation = path;
+                    if (File.Exists(path)) picPreview.ImageLocation = path;
                 }
             }
         }
@@ -59,8 +56,16 @@ namespace QuanLyKhamBenhNgoaiTru
                 return;
             }
 
-            int.TryParse(txtThoiLuong.Text, out int thoiLuong);
-            decimal.TryParse(txtGia.Text, out decimal gia);
+            if(!int.TryParse(txtThoiLuong.Text, out int thoiLuong))
+            {
+                MessageBox.Show("Thời lượng không hợp lệ");
+                return;
+            }
+            if(!decimal.TryParse(txtGia.Text, out decimal gia))
+            {
+                MessageBox.Show("Giá tiền không hợp lệ");
+                return;
+            }
 
             PhimDTO p = new PhimDTO()
             {
@@ -70,32 +75,37 @@ namespace QuanLyKhamBenhNgoaiTru
                 GiaVe = gia,
                 Ngay = dtNgay.Value,
                 TrangThai = cboTrangThai.Text,
-                Poster = txtPoster.Text // chỉ lưu tên file
+                Poster = txtPoster.Text 
             };
+            try
+            {
+                bool kq;
+                if (maPhim == null)
+                {
+                    kq = bll.Them(p);
+                }
+                else
+                {
+                    p.MaPhim = maPhim;
+                    kq = bll.Sua(p);
+                }
 
-            bool kq;
+                if (kq)
+                {
+                    MessageBox.Show("Thành công");
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
 
-            if (maPhim == null)
-            {
-                // ➕ THÊM
-                kq = bll.Them(p);
-            }
-            else
-            {
-                // ✏️ SỬA
-                p.MaPhim = maPhim;
-                kq = bll.Sua(p);
-            }
 
-            if (kq)
-            {
-                MessageBox.Show("Thành công");
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                else
+                {
+                    MessageBox.Show("Thất bại");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Thất bại");
+                MessageBox.Show(ex.Message);
             }
 
         }
@@ -112,28 +122,18 @@ namespace QuanLyKhamBenhNgoaiTru
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     string fileName = Path.GetFileName(dialog.FileName);
-
-                    // thư mục lưu ảnh
                     string folder = Path.Combine(Application.StartupPath, "Poster");
-
-                    // nếu chưa có thì tạo
                     if (!Directory.Exists(folder))
                     {
                         Directory.CreateDirectory(folder);
                     }
 
                     string destPath = Path.Combine(folder, fileName);
-
-                    // copy ảnh vào project nếu chưa có
                     if (!File.Exists(destPath))
                     {
                         File.Copy(dialog.FileName, destPath);
                     }
-
-                    // 👉 hiển thị preview
                     picPreview.ImageLocation = destPath;
-
-                    // 👉 lưu vào textbox (QUAN TRỌNG)
                     txtPoster.Text = fileName;
                 }
             }
@@ -146,6 +146,22 @@ namespace QuanLyKhamBenhNgoaiTru
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtThoiLuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtGia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

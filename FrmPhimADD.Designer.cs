@@ -1,6 +1,6 @@
-﻿namespace QuanLyKhamBenhNgoaiTru
+﻿namespace QuanLyRapChieuPhim
 {
-    partial class PhimADD
+    partial class FrmPhimADD
     {
         /// <summary>
         /// Required designer variable.
@@ -117,6 +117,7 @@
             this.txtThoiLuong.SelectedText = "";
             this.txtThoiLuong.Size = new System.Drawing.Size(236, 33);
             this.txtThoiLuong.TabIndex = 11;
+            this.txtThoiLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThoiLuong_KeyPress);
             // 
             // txtTen
             // 
@@ -258,6 +259,7 @@
             this.txtGia.SelectedText = "";
             this.txtGia.Size = new System.Drawing.Size(236, 33);
             this.txtGia.TabIndex = 10;
+            this.txtGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGia_KeyPress);
             // 
             // picPreview
             // 
@@ -304,7 +306,7 @@
             this.txtPoster.Size = new System.Drawing.Size(162, 38);
             this.txtPoster.TabIndex = 21;
             // 
-            // PhimADD
+            // FrmPhimADD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -326,7 +328,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Name = "PhimADD";
+            this.Name = "FrmPhimADD";
             this.Text = "PhimADD";
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).EndInit();
             this.ResumeLayout(false);

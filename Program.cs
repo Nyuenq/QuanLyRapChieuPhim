@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
     internal class Program
     {
@@ -14,7 +14,7 @@ namespace QuanLyKhamBenhNgoaiTru
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmDangKy());
+            Application.Run(new FrmDangNhap());
         }
     }
 }

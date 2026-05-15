@@ -1,4 +1,4 @@
-﻿namespace QuanLyKhamBenhNgoaiTru
+﻿namespace QuanLyRapChieuPhim
 {
     partial class FrmThanhToan
     {

@@ -1,4 +1,4 @@
-﻿namespace QuanLyKhamBenhNgoaiTru
+﻿namespace QuanLyRapChieuPhim
 {
     partial class UC_QlyPhim
     {
@@ -104,7 +104,8 @@
             // btnXoa
             // 
             this.btnXoa.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(85)))));
-            this.btnXoa.BorderThickness = 2;
+            this.btnXoa.BorderRadius = 15;
+            this.btnXoa.BorderThickness = 3;
             this.btnXoa.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnXoa.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnXoa.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -123,7 +124,8 @@
             // 
             this.btnSua.BackColor = System.Drawing.Color.Transparent;
             this.btnSua.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(191)))), ((int)(((byte)(0)))));
-            this.btnSua.BorderThickness = 2;
+            this.btnSua.BorderRadius = 15;
+            this.btnSua.BorderThickness = 3;
             this.btnSua.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnSua.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnSua.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -141,7 +143,8 @@
             // btnThem
             // 
             this.btnThem.BorderColor = System.Drawing.Color.Cyan;
-            this.btnThem.BorderThickness = 2;
+            this.btnThem.BorderRadius = 15;
+            this.btnThem.BorderThickness = 3;
             this.btnThem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnThem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnThem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));

@@ -57,17 +57,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatVe.cs">
+    <Compile Include="FrmDatVe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DatVe.Designer.cs">
-      <DependentUpon>DatVe.cs</DependentUpon>
+    <Compile Include="FrmDatVe.Designer.cs">
+      <DependentUpon>FrmDatVe.cs</DependentUpon>
     </Compile>
-    <Compile Include="DichVuADD.cs">
+    <Compile Include="FrmDichVuADD.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DichVuADD.Designer.cs">
-      <DependentUpon>DichVuADD.cs</DependentUpon>
+    <Compile Include="FrmDichVuADD.Designer.cs">
+      <DependentUpon>FrmDichVuADD.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmDangKy.cs">
       <SubType>Form</SubType>
@@ -111,11 +111,11 @@
     <Compile Include="FrmTrangChuu.Designer.cs">
       <DependentUpon>FrmTrangChuu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ghe.cs">
+    <Compile Include="UC_Ghe.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Ghe.Designer.cs">
-      <DependentUpon>Ghe.cs</DependentUpon>
+    <Compile Include="UC_Ghe.Designer.cs">
+      <DependentUpon>UC_Ghe.cs</DependentUpon>
     </Compile>
     <Compile Include="InHoaDon.cs">
       <AutoGen>True</AutoGen>
@@ -123,17 +123,17 @@
       <DependentUpon>InHoaDon.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Phim.cs">
+    <Compile Include="UC_Phim+DichVu.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Phim.Designer.cs">
-      <DependentUpon>Phim.cs</DependentUpon>
+    <Compile Include="UC_Phim+DichVu.Designer.cs">
+      <DependentUpon>UC_Phim+DichVu.cs</DependentUpon>
     </Compile>
-    <Compile Include="PhimADD.cs">
+    <Compile Include="FrmPhimADD.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PhimADD.Designer.cs">
-      <DependentUpon>PhimADD.cs</DependentUpon>
+    <Compile Include="FrmPhimADD.Designer.cs">
+      <DependentUpon>FrmPhimADD.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,11 +178,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DatVe.resx">
-      <DependentUpon>DatVe.cs</DependentUpon>
+    <EmbeddedResource Include="FrmDatVe.resx">
+      <DependentUpon>FrmDatVe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DichVuADD.resx">
-      <DependentUpon>DichVuADD.cs</DependentUpon>
+    <EmbeddedResource Include="FrmDichVuADD.resx">
+      <DependentUpon>FrmDichVuADD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDangKy.resx">
       <DependentUpon>FrmDangKy.cs</DependentUpon>
@@ -205,18 +205,18 @@
     <EmbeddedResource Include="FrmTrangChuu.resx">
       <DependentUpon>FrmTrangChuu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ghe.resx">
-      <DependentUpon>Ghe.cs</DependentUpon>
+    <EmbeddedResource Include="UC_Ghe.resx">
+      <DependentUpon>UC_Ghe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InHoaDon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>InHoaDon.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Phim.resx">
-      <DependentUpon>Phim.cs</DependentUpon>
+    <EmbeddedResource Include="UC_Phim+DichVu.resx">
+      <DependentUpon>UC_Phim+DichVu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PhimADD.resx">
-      <DependentUpon>PhimADD.cs</DependentUpon>
+    <EmbeddedResource Include="FrmPhimADD.resx">
+      <DependentUpon>FrmPhimADD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

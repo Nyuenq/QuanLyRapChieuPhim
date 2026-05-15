@@ -1,6 +1,6 @@
-﻿namespace QuanLyKhamBenhNgoaiTru
+﻿namespace QuanLyRapChieuPhim
 {
-    partial class DichVuADD
+    partial class FrmDichVuADD
     {
         /// <summary>
         /// Required designer variable.
@@ -153,6 +153,7 @@
             this.txtGia.SelectedText = "";
             this.txtGia.Size = new System.Drawing.Size(236, 33);
             this.txtGia.TabIndex = 29;
+            this.txtGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGia_KeyPress);
             // 
             // label8
             // 
@@ -202,7 +203,7 @@
             this.picPreview.TabIndex = 42;
             this.picPreview.TabStop = false;
             // 
-            // DichVuADD
+            // FrmDichVuADD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -218,7 +219,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
-            this.Name = "DichVuADD";
+            this.Name = "FrmDichVuADD";
             this.Text = "DichVuADD";
             this.Load += new System.EventHandler(this.DichVuADD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.udSoLuong)).EndInit();

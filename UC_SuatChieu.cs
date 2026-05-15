@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
     public partial class UC_SuatChieu : UserControl
     {
@@ -84,7 +84,7 @@ namespace QuanLyKhamBenhNgoaiTru
                     {
                         var oldImage = picPoster.Image;
                         picPoster.Image = Image.FromStream(fs);
-                        if (oldImage != null) oldImage.Dispose(); // Giải phóng ảnh cũ
+                        if (oldImage != null) oldImage.Dispose(); 
                     }
                 }
                 else
@@ -193,6 +193,15 @@ namespace QuanLyKhamBenhNgoaiTru
                 NgayChieu = dtpNgay.Value.Date,
                 GioChieu = TimeSpan.Parse(cbGio.Text)
             };
+            DateTime now = DateTime.Now;
+            DateTime ngay = dtpNgay.Value.Date;
+            TimeSpan gio = TimeSpan.Parse(cbGio.Text);
+            DateTime thoiDiemChieu = ngay + gio;
+            if (thoiDiemChieu <= now)
+            {
+                MessageBox.Show("Không thể sửa suất chiếu trong quá khứ!");
+                return;
+            }
             string kq = scBLL.Sua(sc);
             MessageBox.Show(kq);
 

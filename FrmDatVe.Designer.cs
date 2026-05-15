@@ -1,6 +1,6 @@
-﻿namespace QuanLyKhamBenhNgoaiTru
+﻿namespace QuanLyRapChieuPhim
 {
-    partial class DatVe
+    partial class FrmDatVe
     {
         /// <summary>
         /// Required designer variable.

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
     public partial class UCQuanLyDichVu : UserControl
     {
@@ -30,14 +30,14 @@ namespace QuanLyKhamBenhNgoaiTru
             flpDichVu.Controls.Clear();
             foreach (DichVuDTO dv in ds)
             {
-                Phim phim = new Phim();
-                phim.DataDV(dv);
-                phim.ClickDichVu += (y) =>
+                PhimVaDichVu dichvu = new PhimVaDichVu();
+                dichvu.DataDV(dv);
+                dichvu.ClickDichVu += (y) =>
                 {
                     HienThiChiTiet(y);
                 };
-                phim.Margin = new Padding(10);
-                flpDichVu.Controls.Add(phim);
+                dichvu.Margin = new Padding(10);
+                flpDichVu.Controls.Add(dichvu);
             }
         }
         private void HienThiChiTiet(DichVuDTO dv)
@@ -52,7 +52,7 @@ namespace QuanLyKhamBenhNgoaiTru
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            DichVuADD dvADD = new DichVuADD();
+            FrmDichVuADD dvADD = new FrmDichVuADD();
             if(dvADD.ShowDialog() == DialogResult.OK)
             {
                 LoadDanhSachDichVu();
@@ -66,7 +66,7 @@ namespace QuanLyKhamBenhNgoaiTru
                 return;
             }
 
-            DichVuADD f = new DichVuADD(SpDangChon.MaDichVu);
+            FrmDichVuADD f = new FrmDichVuADD(SpDangChon.MaDichVu);
             if (f.ShowDialog() == DialogResult.OK)
             {
                 SpDangChon = null;

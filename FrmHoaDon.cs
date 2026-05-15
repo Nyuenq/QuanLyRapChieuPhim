@@ -1,4 +1,5 @@
 ﻿using BLL;
+using QuanLyKhamBenhNgoaiTru;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
     public partial class FrmHoaDon : Form
     {

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
     public partial class UC_QlyPhong : UserControl
     {
@@ -29,13 +29,13 @@ namespace QuanLyKhamBenhNgoaiTru
         {
             List<GheDTO> ds = g.DanhSachG(maPhong);
 
-            if (ds == null || ds.Count == 0)
-            {
-                tlbGhe.Controls.Clear();
-                tlbGhe.Visible = false;
-                MessageBox.Show("Phòng này chưa có ghế!");
-                return;
-            }
+            //if (ds == null || ds.Count == 0)
+            //{
+            //    tlbGhe.Controls.Clear();
+            //    tlbGhe.Visible = false;
+            //    MessageBox.Show("Phòng này chưa có ghế!");
+            //    return;
+            //}
             tlbGhe.Visible = true;
             var phong = bll.GetById(maPhong);
             int soHang = phong.SoHang;
@@ -50,6 +50,7 @@ namespace QuanLyKhamBenhNgoaiTru
                 tlbGhe.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / soHang));
             for (int j = 0; j < soCot; j++)
                 tlbGhe.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / soCot));
+            ToolTip tip = new ToolTip();
             foreach (var ghe in ds)
             {
                 int row = ghe.HangGhe[0] - 'A';
@@ -66,9 +67,9 @@ namespace QuanLyKhamBenhNgoaiTru
                 }
                 if (row < 0 || row >= soHang || col < 0 || col >= soCot)
                     continue;
-                Ghe gheUI = new Ghe();
+                UC_Ghe gheUI = new UC_Ghe();
                 gheUI.DuLieu(ghe);
-                gheUI.Mode = Ghe.CheDoGhe.QuanLy;
+                gheUI.Mode = UC_Ghe.CheDoGhe.QuanLy;
                 gheUI.ChoChMau = true;
                 gheUI.Dock = DockStyle.Fill;
                 gheUI.ClickG = (g) =>
@@ -77,7 +78,6 @@ namespace QuanLyKhamBenhNgoaiTru
                     cboLoai.Text = g.LoaiGhe;
                     cboTrangThai.Text = g.TrangThai;
                 };
-                ToolTip tip = new ToolTip();
                 tip.SetToolTip(gheUI, $"{ghe.HangGhe}{ghe.SoG} - {ghe.LoaiGhe}");
                 tlbGhe.Controls.Add(gheUI, col, row);
                 if (ghe.LoaiGhe == "Đôi")

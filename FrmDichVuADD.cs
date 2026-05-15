@@ -11,17 +11,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
-    public partial class DichVuADD : Form
+    public partial class FrmDichVuADD : Form
     {
-        public DichVuADD()
+        public FrmDichVuADD()
         {
             InitializeComponent();
         }
         DichVuBLL bll = new DichVuBLL();
         string MaDV = null;
-        public DichVuADD(string ma)
+        public FrmDichVuADD(string ma)
         {
             InitializeComponent();
             MaDV = ma;
@@ -126,6 +126,14 @@ namespace QuanLyKhamBenhNgoaiTru
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtGia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
     

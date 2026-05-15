@@ -10,14 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static QuanLyKhamBenhNgoaiTru.Ghe;
+using static QuanLyRapChieuPhim.UC_Ghe;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
-    public partial class DatVe : Form
+    public partial class FrmDatVe : Form
     {
         TaiKhoanDTO taikhoan;
-        public DatVe(TaiKhoanDTO tk)
+        public FrmDatVe(TaiKhoanDTO tk)
         {
             InitializeComponent();
             LoadPhim();
@@ -41,21 +41,17 @@ namespace QuanLyKhamBenhNgoaiTru
             tlbGhe.ColumnCount = soCot;
             for (int i = 0; i < soHang; i++)
             {
-                tlbGhe.RowStyles.Add(
-                    new RowStyle(SizeType.Percent, 100f / soHang)
-                );
+                tlbGhe.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / soHang));
             }
             for (int i = 0; i < soCot; i++)
             {
-                tlbGhe.ColumnStyles.Add(
-                    new ColumnStyle(SizeType.Percent, 100f / soCot)
-                );
+                tlbGhe.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / soCot));
             }
             foreach (GheDTO ghe in ds)
             {
                 int row = ghe.HangGhe[0] - 'A';
                 int col = ghe.SoG - 1;
-                Ghe gheUI = new Ghe();
+                UC_Ghe gheUI = new UC_Ghe();
                 gheUI.DuLieu(ghe);
                 gheUI.Mode = CheDoGhe.DatVe;
                 gheUI.OnChonGhe += GheUI_OnChonGhe;
@@ -84,42 +80,17 @@ namespace QuanLyKhamBenhNgoaiTru
         }
         private void TinhTien()
         {
-            decimal tong = 0;
-
             string maSC = cbSuatChieu.SelectedValue.ToString();
-
             decimal giaGoc = veBLL.LayGiaVeGoc(maSC);
-
-            foreach (var ghe in dsGheChon)
-            {
-                if (ghe.LoaiGhe == "Đôi")
-                {
-                    tong += (giaGoc * 2) + 20000;
-                }
-                else if (ghe.LoaiGhe == "VIP")
-                {
-                    tong += giaGoc + 10000;
-                }
-                else
-                {
-                    tong += giaGoc;
-                }
-            }
-
+            decimal tong = veBLL.TinhTongTienGhe(dsGheChon, giaGoc);
             lblTongTien.Text = tong.ToString("N0") + " VNĐ";
             MaHD.TongTienGhe = tong;
         }
-        
-
-        
         private void LoadPhim()
         {
             cbPhim.DataSource = phimBLL.GetDanhSach();
-
             cbPhim.DisplayMember = "TenPhim";
-
             cbPhim.ValueMember = "MaPhim";
-
             cbPhim.SelectedIndex = -1;
         }
         void LoadPoster(string fileName)
@@ -131,7 +102,6 @@ namespace QuanLyKhamBenhNgoaiTru
                     ClearPoster();
                     return;
                 }
-
                 string path = Path.Combine(Application.StartupPath, "Poster", fileName);
 
                 if (File.Exists(path))
@@ -159,11 +129,6 @@ namespace QuanLyKhamBenhNgoaiTru
             picPoster.Image = null;
             if (oldImage != null) oldImage.Dispose();
         }
-
-       
-
-       
-
         private void cbSuatChieu_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbSuatChieu.SelectedIndex == -1)
@@ -186,18 +151,11 @@ namespace QuanLyKhamBenhNgoaiTru
                 return;
 
             string maPhim = cbPhim.SelectedValue.ToString();
-
-            cbSuatChieu.DataSource =
-                suatchieuBLL.LaySuatChieuTheoPhim(maPhim);
-
+            cbSuatChieu.DataSource = suatchieuBLL.LaySuatChieuTheoPhim(maPhim);
             cbSuatChieu.DisplayMember = "HienThi";
-
             cbSuatChieu.ValueMember = "MaSuatChieu";
-
             cbSuatChieu.SelectedIndex = -1;
-
             tlbGhe.Controls.Clear();
-
             if (cbPhim.SelectedItem is PhimDTO phim)
             {
                 LoadPoster(phim.Poster);
@@ -213,16 +171,13 @@ namespace QuanLyKhamBenhNgoaiTru
                 return;
             }
             MaHD.GheDangChon = dsGheChon;
-            MaHD.MaSuatChieu =
-                cbSuatChieu.SelectedValue.ToString();
+            MaHD.MaSuatChieu = cbSuatChieu.SelectedValue.ToString();
             if (cbPhim.SelectedItem is PhimDTO phim)
             {
                 MaHD.TenPhim = phim.TenPhim;
             }
 
-            // SUẤT CHIẾU
-            SuatChieuDTO sc =
-                cbSuatChieu.SelectedItem as SuatChieuDTO;
+            SuatChieuDTO sc = cbSuatChieu.SelectedItem as SuatChieuDTO;
 
             if (sc != null)
             {
@@ -232,7 +187,6 @@ namespace QuanLyKhamBenhNgoaiTru
 
                 MaHD.TenPhong = sc.TenPhong;
             }
-
             FrmDichVu f = new FrmDichVu();
 
             f.ShowDialog();

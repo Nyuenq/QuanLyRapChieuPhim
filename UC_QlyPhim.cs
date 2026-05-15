@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
     public partial class UC_QlyPhim : UserControl
     {
@@ -31,7 +31,7 @@ namespace QuanLyKhamBenhNgoaiTru
 
             foreach (PhimDTO p in ds)
             {
-                Phim phim = new Phim();
+                PhimVaDichVu phim = new PhimVaDichVu();
                 phim.DuLieu(p);
 
                 phim.ClickPhim += (x) =>
@@ -96,7 +96,7 @@ namespace QuanLyKhamBenhNgoaiTru
                 return;
             }
 
-            PhimADD f = new PhimADD(phimDangChon.MaPhim);
+            FrmPhimADD f = new FrmPhimADD(phimDangChon.MaPhim);
 
             if (f.ShowDialog() == DialogResult.OK)
             {
@@ -108,7 +108,7 @@ namespace QuanLyKhamBenhNgoaiTru
         private void guna2Button1_Click(object sender, EventArgs e)
         {
           
-            PhimADD f = new PhimADD();
+            FrmPhimADD f = new FrmPhimADD();
 
             if (f.ShowDialog() == DialogResult.OK)
             {

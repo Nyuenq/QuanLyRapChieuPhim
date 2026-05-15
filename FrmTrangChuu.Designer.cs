@@ -1,4 +1,4 @@
-﻿namespace QuanLyKhamBenhNgoaiTru
+﻿namespace QuanLyRapChieuPhim
 {
     partial class FrmTrangChuu
     {
@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTrangChuu));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnThongKe = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnDangKy = new Guna.UI2.WinForms.Guna2Button();
             this.btnQlDichVu = new Guna.UI2.WinForms.Guna2Button();
@@ -41,10 +42,11 @@
             this.btnDangXuat = new Guna.UI2.WinForms.Guna2Button();
             this.lbTen = new System.Windows.Forms.Label();
             this.pnlMain = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnThongKe = new Guna.UI2.WinForms.Guna2Button();
             this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -65,6 +67,27 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(228, 872);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // btnThongKe
+            // 
+            this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(59)))));
+            this.btnThongKe.BorderRadius = 20;
+            this.btnThongKe.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThongKe.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnThongKe.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThongKe.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnThongKe.FillColor = System.Drawing.Color.Transparent;
+            this.btnThongKe.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnThongKe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.btnThongKe.HoverState.BorderColor = System.Drawing.Color.Cyan;
+            this.btnThongKe.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+            this.btnThongKe.HoverState.ForeColor = System.Drawing.Color.Cyan;
+            this.btnThongKe.Location = new System.Drawing.Point(0, 649);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(225, 45);
+            this.btnThongKe.TabIndex = 48;
+            this.btnThongKe.Text = "Thống Kê";
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
             // guna2PictureBox1
             // 
@@ -261,31 +284,12 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
+            this.pnlMain.Controls.Add(this.label1);
+            this.pnlMain.Font = new System.Drawing.Font("Times New Roman", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.pnlMain.Location = new System.Drawing.Point(260, 24);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1189, 872);
             this.pnlMain.TabIndex = 2;
-            // 
-            // btnThongKe
-            // 
-            this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(59)))));
-            this.btnThongKe.BorderRadius = 20;
-            this.btnThongKe.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThongKe.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnThongKe.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnThongKe.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnThongKe.FillColor = System.Drawing.Color.Transparent;
-            this.btnThongKe.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnThongKe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.btnThongKe.HoverState.BorderColor = System.Drawing.Color.Cyan;
-            this.btnThongKe.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-            this.btnThongKe.HoverState.ForeColor = System.Drawing.Color.Cyan;
-            this.btnThongKe.Location = new System.Drawing.Point(0, 649);
-            this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Size = new System.Drawing.Size(225, 45);
-            this.btnThongKe.TabIndex = 48;
-            this.btnThongKe.Text = "Thống Kê";
-            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
             // guna2CircleButton1
             // 
@@ -306,6 +310,16 @@
             this.guna2CircleButton1.TabStop = false;
             this.guna2CircleButton1.Click += new System.EventHandler(this.guna2CircleButton1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Cyan;
+            this.label1.Location = new System.Drawing.Point(82, 285);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(955, 53);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Chào mừng bạn đến với Diamond rạp chiếu phim";
+            // 
             // FrmTrangChuu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -322,6 +336,8 @@
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            this.pnlMain.ResumeLayout(false);
+            this.pnlMain.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -332,17 +348,16 @@
         private Guna.UI2.WinForms.Guna2Panel pnlMain;
         private Guna.UI2.WinForms.Guna2Button btnDangXuat;
         private System.Windows.Forms.Label lbTen;
-        private UC_SuatChieu uC_SuatChieu1;
         private Guna.UI2.WinForms.Guna2Button btnQlDichVu;
         private Guna.UI2.WinForms.Guna2Button btnQlTaiKhoan;
         private Guna.UI2.WinForms.Guna2Button btnQlPhim;
         private Guna.UI2.WinForms.Guna2Button btnQlPhong;
         private Guna.UI2.WinForms.Guna2Button btnQlSuatChieu;
         private Guna.UI2.WinForms.Guna2Button btnDatVe;
-        private UCQuanLyDichVu ucQuanLyThe1;
         private Guna.UI2.WinForms.Guna2Button btnDangKy;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Button btnThongKe;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+        private System.Windows.Forms.Label label1;
     }
 }

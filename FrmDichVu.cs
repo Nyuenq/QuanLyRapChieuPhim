@@ -9,16 +9,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
     public partial class FrmDichVu : Form
     {
         DichVuBLL bll = new DichVuBLL();
         DichVuDTO SpDangChon ;
-        string maHD = MaHD.MaHoaDon;
         public FrmDichVu()
         {
             InitializeComponent();
@@ -31,16 +29,16 @@ namespace QuanLyKhamBenhNgoaiTru
 
             foreach (DichVuDTO dv in ds)
             {
-                Phim phim = new Phim();
-                phim.DataDV(dv);
+                PhimVaDichVu dichvu = new PhimVaDichVu();
+                dichvu.DataDV(dv);
 
-                phim.ClickDichVu += (y) =>
+                dichvu.ClickDichVu += (y) =>
                 {
                     HienThiChiTiet(y);
                 };
 
-                phim.Margin = new Padding(10);
-                flpDichVu.Controls.Add(phim);
+                dichvu.Margin = new Padding(10);
+                flpDichVu.Controls.Add(dichvu);
             }
         }
         private void HienThiChiTiet(DichVuDTO dv)
@@ -55,19 +53,11 @@ namespace QuanLyKhamBenhNgoaiTru
                 udSoLuong.Items.Add(i.ToString());
             }
             udSoLuong.SelectedIndex = 0;
-            //lbGia.Text = "0 VND";
-
         }
 
         private void udSoLuong_SelectedItemChanged(object sender, EventArgs e)
         {
-            //int soLg = 0;
 
-            //int.TryParse(udSoLuong.Text, out soLg);
-
-            //decimal tongTien = soLg * SpDangChon.Gia ;
-
-            //lbGia.Text = tongTien.ToString("N0") + " VNĐ";
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

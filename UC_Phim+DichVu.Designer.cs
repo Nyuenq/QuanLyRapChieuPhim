@@ -1,6 +1,6 @@
-﻿namespace QuanLyKhamBenhNgoaiTru
+﻿namespace QuanLyRapChieuPhim
 {
-    partial class Phim
+    partial class PhimVaDichVu
     {
         /// <summary> 
         /// Required designer variable.

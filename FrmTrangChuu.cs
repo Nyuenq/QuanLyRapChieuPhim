@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
     public partial class FrmTrangChuu : Form
     {
@@ -43,7 +43,7 @@ namespace QuanLyKhamBenhNgoaiTru
 
         private void btnDatVe_Click(object sender, EventArgs e)
         {
-            DatVe datve = new DatVe(taikhoan);
+            FrmDatVe datve = new FrmDatVe(taikhoan);
             this.Hide();
             datve.ShowDialog();
             this.Show();
@@ -74,6 +74,7 @@ namespace QuanLyKhamBenhNgoaiTru
                 btnQlPhong.Visible = false;
                 btnQlTaiKhoan.Visible = false;
                 btnDangKy.Visible = false;
+                btnQlSuatChieu.Visible = false;
             }
             lbTen.Text = taikhoan.HoTen ;
         }

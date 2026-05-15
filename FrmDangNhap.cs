@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
     public partial class FrmDangNhap : Form
     {
@@ -43,8 +43,7 @@ namespace QuanLyKhamBenhNgoaiTru
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrWhiteSpace(txtTaiKhoan.Text) ||
-     string.IsNullOrWhiteSpace(txtMatKhau.Text))
+            if (string.IsNullOrWhiteSpace(txtTaiKhoan.Text) ||string.IsNullOrWhiteSpace(txtMatKhau.Text))
             {
                 MessageBox.Show("Tài khoản và mật khẩu không được để trống");
                 return;

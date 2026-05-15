@@ -10,24 +10,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKhamBenhNgoaiTru
+namespace QuanLyRapChieuPhim
 {
-    public partial class Ghe : UserControl
+    public partial class UC_Ghe : UserControl
     {
         public GheDTO ghe;
         public Action<GheDTO> ClickG;
         public bool ChoChMau = false;
         bool ChMau = false;
-        Color mauMacDinh;
         public CheDoGhe Mode = CheDoGhe.QuanLy;
-        public Action<GheDTO> ClickGhe;
 
         public enum CheDoGhe
         {
             QuanLy,
             DatVe
         }
-        public Ghe()
+        public UC_Ghe()
         {
             InitializeComponent();
             this.Margin = new Padding(3);
@@ -49,46 +47,22 @@ namespace QuanLyKhamBenhNgoaiTru
             g.SmoothingMode = SmoothingMode.AntiAlias;
             Rectangle rect = this.ClientRectangle;
             GraphicsPath path = GetPath(rect);
-            Color MauGhe;
-            if (DaChon)
-            {
-                MauGhe = Color.Aqua;
-            }
-            else
-            {
-                if (ghe.TrangThai == "Hỏng")
-                {
-                    MauGhe = Color.Gray;
-                }
-                else if (ghe.TrangThai == "Đã đặt")
-                {
-                    MauGhe = Color.Red;
-                }
-                else
-                {
-                    if (ghe.LoaiGhe == "VIP")
-                    {
-                        MauGhe = Color.Gold;
-                        mauMacDinh = Color.Gold;
-                    }
-                    else if (ghe.LoaiGhe == "Đôi")
-                    {
-                        MauGhe = Color.Pink;
-                        mauMacDinh = Color.Pink;
-                    }
-                    else
-                    {
-                        MauGhe = Color.Green;
-                        mauMacDinh = Color.Green;
-                    }
-                }
-
-                if (ChMau)
-                    MauGhe = ControlPaint.Light(MauGhe);
-            }
+            Color MauGhe = LayMauTheoTrangThai();
+            
             g.FillPath(new SolidBrush(MauGhe), path);
             string ten = ghe.HangGhe + ghe.SoG;
             TextRenderer.DrawText(g,ten,this.Font,rect,this.ForeColor,TextFormatFlags.HorizontalCenter|TextFormatFlags.VerticalCenter);
+        }
+        private Color LayMauTheoTrangThai()
+        {
+            if (DaChon) return Color.Aqua;
+            if (ghe.TrangThai == "Hỏng") return Color.Gray;
+            if (ghe.TrangThai == "Đã đặt") return Color.Red;
+            Color mauGoc;
+            if (ghe.LoaiGhe == "VIP") mauGoc = Color.Gold;
+            else if (ghe.LoaiGhe == "Đôi") mauGoc = Color.Pink;
+            else mauGoc = Color.Green;
+            return ChMau ? ControlPaint.Light(mauGoc) : mauGoc;
         }
         private GraphicsPath GetPath(Rectangle rect)
         {
@@ -126,7 +100,7 @@ namespace QuanLyKhamBenhNgoaiTru
             if (ghe == null) return;
             if (Mode == CheDoGhe.QuanLy)
             {
-                ClickGhe?.Invoke(ghe);
+                ClickG?.Invoke(ghe);
                 return;
             }
             if (Mode == CheDoGhe.DatVe)
