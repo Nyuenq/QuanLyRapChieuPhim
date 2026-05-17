@@ -19,7 +19,7 @@ namespace QuanLyRapChieuPhim
         SuatChieuBLL scBLL = new SuatChieuBLL();
         PhongBLL phongBLL = new PhongBLL();
         PhimBLL phimBLL = new PhimBLL();
-
+        DataTable danhsach = new DataTable();
         string currentMaSC = null;
 
         bool isLoadingCombo = false;
@@ -40,7 +40,7 @@ namespace QuanLyRapChieuPhim
         void LoadCombo()
         {
             isLoadingCombo = true; 
-            var dsPhim = phimBLL.GetDanhSach();
+            var dsPhim = phimBLL.LayPhimDangChieu();
             cbPhim.DataSource = null;
             cbPhim.DisplayMember = "TenPhim"; 
             cbPhim.ValueMember = "MaPhim";    
@@ -59,13 +59,18 @@ namespace QuanLyRapChieuPhim
 
         void LoadGrid()
         {
-            dgvSuatChieu.DataSource = scBLL.GetAll();
+            danhsach = scBLL.GetAll();
+            HienThiGrid(danhsach);
+        }
+        void HienThiGrid(DataTable ds)
+        {
+            dgvSuatChieu.DataSource = null;
+            dgvSuatChieu.DataSource = ds;
 
             if (dgvSuatChieu.Columns.Contains("MaPhim")) dgvSuatChieu.Columns["MaPhim"].Visible = false;
             if (dgvSuatChieu.Columns.Contains("MaPhong")) dgvSuatChieu.Columns["MaPhong"].Visible = false;
             if (dgvSuatChieu.Columns.Contains("MaSuatChieu")) dgvSuatChieu.Columns["MaSuatChieu"].Visible = false;
         }
-
         void LoadPoster(string fileName)
         {
             try
@@ -250,6 +255,20 @@ namespace QuanLyRapChieuPhim
         private void UC_SuatChieu_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            string tuKhoa = txtTimKiem.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(tuKhoa))
+            {
+                dgvSuatChieu.DataSource = scBLL.GetAll();
+            }
+            else
+            {
+                dgvSuatChieu.DataSource = scBLL.TimKiem(tuKhoa);
+            }
         }
     }
 

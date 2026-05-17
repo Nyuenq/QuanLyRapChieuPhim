@@ -67,5 +67,18 @@ namespace QuanLyRapChieuPhim
         {
 
         }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            string tukhoa = txtTimKiem.Text.Trim();
+            if (string.IsNullOrWhiteSpace(tukhoa) )
+            {
+                dgvTaiKhoan.DataSource = bll.DanhSachTaiKhoan();
+            }
+            else
+            {
+                dgvTaiKhoan.DataSource = bll.TimTaiKhoan(tukhoa);
+            }
+        }
     }
 }

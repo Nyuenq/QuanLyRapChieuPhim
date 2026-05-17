@@ -88,7 +88,7 @@ namespace QuanLyRapChieuPhim
         }
         private void LoadPhim()
         {
-            cbPhim.DataSource = phimBLL.GetDanhSach();
+            cbPhim.DataSource = phimBLL.LayPhimDangChieu();
             cbPhim.DisplayMember = "TenPhim";
             cbPhim.ValueMember = "MaPhim";
             cbPhim.SelectedIndex = -1;

@@ -25,12 +25,16 @@ namespace QuanLyRapChieuPhim
         private void LoadDanhSachDichVu()
         {
             List<DichVuDTO> ds = bll.GetAll();
+            HienThiThongTin(ds);
+        }
+        void HienThiThongTin(List<DichVuDTO> dv)
+        {
             flpDichVu.Controls.Clear();
 
-            foreach (DichVuDTO dv in ds)
+            foreach (DichVuDTO dvu in dv)
             {
                 PhimVaDichVu dichvu = new PhimVaDichVu();
-                dichvu.DataDV(dv);
+                dichvu.DataDV(dvu);
 
                 dichvu.ClickDichVu += (y) =>
                 {
@@ -151,6 +155,19 @@ namespace QuanLyRapChieuPhim
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            string tukhoa = txtTimKiem.Text.Trim().ToLower();
+            if (string.IsNullOrWhiteSpace(tukhoa))
+            {
+                HienThiThongTin(bll.GetAll());
+            }
+            else
+            {
+                HienThiThongTin(bll.TimKiem(tukhoa));
+            }
         }
     }
 }

@@ -43,10 +43,8 @@
             this.lbTen = new System.Windows.Forms.Label();
             this.pnlMain = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
-            this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -284,11 +282,11 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(46)))));
-            this.pnlMain.Controls.Add(this.label1);
-            this.pnlMain.Font = new System.Drawing.Font("Times New Roman", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.pnlMain.Location = new System.Drawing.Point(260, 24);
+            this.pnlMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlMain.BackgroundImage")));
+            this.pnlMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlMain.Location = new System.Drawing.Point(258, 27);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1189, 872);
+            this.pnlMain.Size = new System.Drawing.Size(1189, 869);
             this.pnlMain.TabIndex = 2;
             // 
             // guna2CircleButton1
@@ -310,16 +308,6 @@
             this.guna2CircleButton1.TabStop = false;
             this.guna2CircleButton1.Click += new System.EventHandler(this.guna2CircleButton1_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Cyan;
-            this.label1.Location = new System.Drawing.Point(82, 285);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(955, 53);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Chào mừng bạn đến với Diamond rạp chiếu phim";
-            // 
             // FrmTrangChuu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -328,16 +316,14 @@
             this.ClientSize = new System.Drawing.Size(1492, 908);
             this.ControlBox = false;
             this.Controls.Add(this.guna2CircleButton1);
-            this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.guna2Panel1);
+            this.Controls.Add(this.pnlMain);
             this.Name = "FrmTrangChuu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmTrangChuu";
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            this.pnlMain.ResumeLayout(false);
-            this.pnlMain.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -358,6 +344,5 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Button btnThongKe;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
-        private System.Windows.Forms.Label label1;
     }
 }

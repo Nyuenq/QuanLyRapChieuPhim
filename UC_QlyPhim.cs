@@ -24,21 +24,24 @@ namespace QuanLyRapChieuPhim
         
         PhimBLL bll = new PhimBLL();
         PhimDTO phimDangChon = null;
+
         private void LoadDanhSachPhim()
         {
-            List<PhimDTO> ds = bll.GetDanhSach();
-            flpPhim.Controls.Clear();
+            List<PhimDTO> danhSachGoc = bll.GetDanhSach();
+            HienThiDanhSach(danhSachGoc);
+        }
 
+        private void HienThiDanhSach(List<PhimDTO> ds)
+        {
+            flpPhim.Controls.Clear();
             foreach (PhimDTO p in ds)
             {
                 PhimVaDichVu phim = new PhimVaDichVu();
                 phim.DuLieu(p);
-
                 phim.ClickPhim += (x) =>
                 {
                     HienThiChiTiet(x);
                 };
-
                 phim.Margin = new Padding(10);
                 flpPhim.Controls.Add(phim);
             }
@@ -119,6 +122,20 @@ namespace QuanLyRapChieuPhim
         private void ptbPoster_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            string tuKhoa = txtTimKiem.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(tuKhoa))
+            {
+                HienThiDanhSach(bll.GetDanhSach());
+            }
+            else
+            {
+                HienThiDanhSach(bll.TimKiem(tuKhoa));
+            }
         }
     }
 }

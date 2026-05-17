@@ -27,6 +27,10 @@ namespace QuanLyRapChieuPhim
         private void LoadDanhSachDichVu()
         {
             List<DichVuDTO> ds = bll.GetAll();
+            HienThiDanhSach(ds);
+        }
+        private void HienThiDanhSach(List<DichVuDTO> ds)
+        {
             flpDichVu.Controls.Clear();
             foreach (DichVuDTO dv in ds)
             {
@@ -103,6 +107,19 @@ namespace QuanLyRapChieuPhim
                 }
             }
         }
-        
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            string tuKhoa = txtTimKiem.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(tuKhoa))
+            {
+                HienThiDanhSach(bll.GetAll());
+            }
+            else
+            {
+                HienThiDanhSach(bll.TimKiem(tuKhoa));
+            }
+        }
     }
 }

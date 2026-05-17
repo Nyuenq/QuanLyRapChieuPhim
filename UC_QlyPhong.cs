@@ -189,5 +189,24 @@ namespace QuanLyRapChieuPhim
             };
             string maPhong = dgvPhong.Rows[e.RowIndex].Cells["MaP"].Value.ToString();
         }
+
+        private void UC_QlyPhong_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            string tuKhoa = txtTimKiem.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(tuKhoa))
+            {
+                dgvPhong.DataSource = bll.DanhSachP();
+            }
+            else
+            {
+                dgvPhong.DataSource = bll.TimKiemPhong(tuKhoa);
+            }
+        }
     }
 }
